@@ -32,7 +32,25 @@ public class DList {
 		return (head == null);
 	}
 	
-	
-	
-
+	/**
+	 * The size method returns the length of the list
+	 * @return true if list is empty, false otherwise 
+	 */
+	public int size(){
+		int count = 0;
+		Node prev = head;
+		while(prev != null){
+			count++;
+			prev = prev.next;
+		}
+		return count;
+	}
 }
+
+
+
+
+
+
+
+
