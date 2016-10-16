@@ -45,6 +45,32 @@ public class DList {
 		}
 		return count;
 	}
+	
+	/**
+	 * The find method finds a matching value and returns true
+	 * @param value is the value of the list element 
+	 * @return returns true if there is a match false otherwise
+	 */
+	public Node find(String value){
+        Node theNode = head;
+        if(!isEmpty()){
+            while(theNode.value != value){
+                // Checks if at the end of the LinkedList
+                if(theNode.next == null){
+                    // Got to the end of the Links in LinkedList
+                    // without finding a match
+                    return null;
+
+                } else {
+                    // Found a matching Link in the LinkedList
+                    theNode = theNode.next;
+                }                
+            }
+        } else {
+            System.out.println("Empty LinkedList");
+        }
+        return theNode;
+    }
 }
 
 
