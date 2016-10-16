@@ -71,6 +71,57 @@ public class DList {
         }
         return theNode;
     }
+	
+	/**
+	 * The add method adds to the end of the list.
+	 * @param var The value to add.
+	 */
+	public void add(String var){
+		if (isEmpty()){
+			last = new Node(var);
+			head = last;
+		} else {
+			last.next = new Node (var, null, last);
+			last = last.next;
+		}
+	
+	}
+	
+	/**
+	 * This add method adds an element at an index.
+	 * @param var The element to add to the list.
+	 * @param index The index at which to add.
+	 * @exception IndexOutOfBoundsException
+	 * when the index is out of bounds.
+	 */
+	public void add(int index, String var){
+		if (index < 0 || index > size()){
+			String message = String.valueOf(index);
+			throw new IndexOutOfBoundsException(message);
+		}
+		if (index == 0){
+			Node prev = head;
+			head = new Node (var, prev, null);
+			if(prev != null)
+				prev.prev = head;
+			if (last == null)
+				last = head;
+			return;
+			
+		}
+		Node pred = head;
+		for (int k = 1; k <= index - 1; k++){
+			pred = pred.next;
+		}
+		Node succ = pred.next;
+		Node middle = new Node(var, succ, pred);
+		pred.next = middle;
+		if (succ == null)
+			last = middle;
+		else
+			succ.prev = middle;
+	}
+	
 }
 
 
