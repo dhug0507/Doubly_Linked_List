@@ -22,6 +22,17 @@ public class DList {
 		last = null;
 	}
 	
+	/**
+	 * The isEmpty methods checks to see if the list 
+	 * is empty.
+	 * @return true if list is empty, false otherwise
+	 */
+	
+	public boolean isEmpty(){
+		return (head == null);
+	}
+	
+	
 	
 
 }
