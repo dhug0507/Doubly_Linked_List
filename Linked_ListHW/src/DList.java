@@ -121,6 +121,31 @@ public class DList {
 		else
 			succ.prev = middle;
 	}
+	/**
+	 * The traverseFoward method returns the list from the first 
+	 * to the last value.
+	 * @return returns the entire list from first to last.
+	 */
+	public void traverseFoward(){
+		Node ref = head;
+		while(ref != null){
+			System.out.print(ref.value + " ");
+			ref = ref.next;
+		}
+	}
+	/**
+	 * The traverseBackwards method returns the list from the last 
+	 * to the first value.
+	 * @return returns the entire list from last to first.
+	 */
+	public void traverseBackwards(){
+		Node ref = last;
+		while (ref != null){
+		    System.out.print(ref.value + " ");
+		    ref = ref.prev;
+		}
+		
+	}
 	
 }
 
