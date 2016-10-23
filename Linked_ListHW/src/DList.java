@@ -145,6 +145,40 @@ public class DList {
 		    ref = ref.prev;
 		}
 		
+		
+	}
+	
+	public String remove(int index){
+		
+		if (index < 0 || index >= size()){
+			String message = String.valueOf(index);
+			throw new IndexOutOfBoundsException(message);			
+		}
+		
+		// Locate the node targeted for removal
+		Node target = head;
+		for (int k = 1; k <= index; k++)
+			target=target.next;
+		
+		String element = target.value; // Element to return
+		Node pred = target.prev; // node before the target
+		Node succ = target.next; // node after the target
+		
+		// Route forward and back pointers around 
+		// the node to be removed.
+		if(pred == null)
+			head = succ;
+		else 
+			pred.next = succ;
+		
+		if (succ == null)
+			last = pred;
+		else
+			succ.prev = pred;
+		
+		return element;
+		
+		
 	}
 	
 }
