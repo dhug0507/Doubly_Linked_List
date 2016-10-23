@@ -10,7 +10,37 @@
  * The DList class contains methods for implementing a doubly
  * linked list.
  */
-public class DList {
+class DList {
+	
+	private class Node {
+		 String value; //Value of a list element
+		 Node next; //Next node in the list
+		 Node prev; //Previous node in the list
+		
+		/**
+		 * Constructor
+		 * @param val the element to be stored in the node
+		 * @param n The reference to the successor node
+		 * @param p The reference to the Predecessor node
+		 */
+		 Node(String val, Node n, Node p ){
+			value = val;
+			next = n;
+			prev = p;
+		}
+		
+		/**
+		 * Constructor
+		 * @param value The element to be stored in the node
+		 */
+		 Node(String value){
+			this(value, null, null);
+		}
+
+	}
+	
+	
+	
 	public Node head; //Head of the list
 	public Node last; //Last element in the list
 	
@@ -38,10 +68,10 @@ public class DList {
 	 */
 	public int size(){
 		int count = 0;
-		Node prev = head;
-		while(prev != null){
+		Node p = head;
+		while(p != null){
 			count++;
-			prev = prev.next;
+			p = p.next;
 		}
 		return count;
 	}
@@ -83,6 +113,7 @@ public class DList {
 		} else {
 			last.next = new Node (var, null, last);
 			last = last.next;
+			
 		}
 	
 	}
@@ -100,10 +131,10 @@ public class DList {
 			throw new IndexOutOfBoundsException(message);
 		}
 		if (index == 0){
-			Node prev = head;
-			head = new Node (var, prev, null);
-			if(prev != null)
-				prev.prev = head;
+			Node p = head;
+			head = new Node (var, p, null);
+			if(p != null)
+				p.prev = head;
 			if (last == null)
 				last = head;
 			return;
@@ -121,6 +152,14 @@ public class DList {
 		else
 			succ.prev = middle;
 	}
+	
+	/**
+	 * The toString method
+	 */
+	//public String toString(){
+		
+	//}
+	
 	/**
 	 * The traverseFoward method returns the list from the first 
 	 * to the last value.
@@ -147,7 +186,13 @@ public class DList {
 		
 		
 	}
-	
+	/**
+	 * The remove method removed a node at any given index
+	 * @param index the position of the element to remove
+	 * @return The element removed
+	 * @exception IndexOutOfBoundsException When
+	 * index is out of bounds.
+	 */
 	public String remove(int index){
 		
 		if (index < 0 || index >= size()){
@@ -180,6 +225,7 @@ public class DList {
 		
 		
 	}
+	
 	
 }
 
