@@ -154,11 +154,22 @@ class DList {
 	}
 	
 	/**
-	 * The toString method
+	 * The toString method computes the string
+	 * representation of the list.
+	 * @return The string representation of the 
+	 * linked list.
 	 */
-	//public String toString(){
+	public String toString(){
+		StringBuilder strBuilder = new StringBuilder();
 		
-	//}
+		// Use p to walk down the linked list
+		Node p = head;
+		while (p != null){
+			strBuilder.append(p.value + "\n");
+			p = p.next;
+		}
+		return strBuilder.toString();
+	}
 	
 	/**
 	 * The traverseFoward method returns the list from the first 
@@ -226,6 +237,20 @@ class DList {
 		
 	}
 	
+	public static void main(String[] args) {
+		DList linkedList = new DList();
+		linkedList.add("Amanda");
+		linkedList.add("Brian");
+		linkedList.add("Daniel");
+		linkedList.add("Emily");
+		System.out.println("The elements of the list are: ");
+		System.out.println(linkedList);
+		
+		
+		
+		
+
+	}
 	
 }
 
