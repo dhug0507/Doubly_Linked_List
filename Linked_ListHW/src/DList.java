@@ -3,7 +3,7 @@ import java.util.*;
  * Daniel Hug
  * Linked List Homework
  * 10/14/16
- * Part of my code is reference from my textbook "Starting out with Java
+ * Part of my code is referenced from my textbook "Starting out with Java
  * from Control structures to Data Structures"
  */
 
@@ -13,10 +13,17 @@ import java.util.*;
  */
 class DList {
 	
+	/**
+	 * The Node class stores a list element and
+	 * a reference to the next node.
+	 * 
+	 *
+	 */
 	private class Node {
 		 String value; //Value of a list element
 		 Node next; //Next node in the list
 		 Node prev; //Previous node in the list
+		public Object name;
 		
 		/**
 		 * Constructor
@@ -37,6 +44,10 @@ class DList {
 		 Node(String value){
 			this(value, null, null);
 		}
+		 
+		 public String getValue(){
+			    return this.value;
+			  }
 
 	}
 	
@@ -155,17 +166,29 @@ class DList {
 			succ.prev = middle;
 	}
 	
-   /* public void addABC(String name){
+	/**
+	 * The addABC method adds an element to the list in 
+	 * alphabetical order.
+	 * @param name The element you want added into the list.
+	 */
+    public void addABC(String name){
     	 Node newNode = new Node(name);
-    	 size++;
-    	newNode previous = null;
-    	newNode current = head;
+    	 Node previous = null;
+    	 Node current = head;
     	
-    	while(current != null && current.name.compareTo(name) <= 0){
+    	while(current != null && newNode.getValue().compareTo(current.getValue()) <= 0){
             previous = current;
             current = current.next;
     	}
-    }*/
+    	if(previous == null){
+    	    head = newNode;
+    	}else{
+    	    previous.next = newNode;
+    	    newNode.next = current;
+    	}
+    	
+    }
+    
 	
 	/**
 	 * The toString method computes the string
@@ -264,7 +287,7 @@ class DList {
 		linkedList.add("Amanda"); // Adds string to index 0
 		linkedList.add("Brian"); // Adds string to index 1
 		linkedList.add("Daniel"); // Adds string to index 2
-		linkedList.add("Emily"); // Adds string to index 3
+		linkedList.add("Vivian"); // Adds string to index 3
 		System.out.println("The elements of the list are: ");
 		System.out.println(linkedList);
 		System.out.println("---------");
@@ -292,10 +315,13 @@ class DList {
 		 
 		
 		System.out.println("Delete the entire Linked List");
-		linkedList.nuke();
+		linkedList.nuke();//Deletes the entire list
 		System.out.println("The elements of the list are: ");
 		System.out.println(linkedList);
 		System.out.println("---------");
+		
+		
+		
 		
 		
 		
