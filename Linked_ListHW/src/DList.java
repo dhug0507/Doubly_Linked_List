@@ -1,3 +1,4 @@
+import java.util.*;
 /*
  * Daniel Hug
  * Linked List Homework
@@ -99,6 +100,7 @@ class DList {
         } else {
             System.out.println("Empty LinkedList");
         }
+        System.out.println("Match");
         return theNode;
     }
 	
@@ -153,6 +155,18 @@ class DList {
 			succ.prev = middle;
 	}
 	
+   /* public void addABC(String name){
+    	 Node newNode = new Node(name);
+    	 size++;
+    	newNode previous = null;
+    	newNode current = head;
+    	
+    	while(current != null && current.name.compareTo(name) <= 0){
+            previous = current;
+            current = current.next;
+    	}
+    }*/
+	
 	/**
 	 * The toString method computes the string
 	 * representation of the list.
@@ -179,7 +193,7 @@ class DList {
 	public void traverseFoward(){
 		Node ref = head;
 		while(ref != null){
-			System.out.print(ref.value + " ");
+			System.out.println(ref.value + " ");
 			ref = ref.next;
 		}
 	}
@@ -191,7 +205,7 @@ class DList {
 	public void traverseBackwards(){
 		Node ref = last;
 		while (ref != null){
-		    System.out.print(ref.value + " ");
+		    System.out.println(ref.value + " ");
 		    ref = ref.prev;
 		}
 		
@@ -236,15 +250,52 @@ class DList {
 		
 		
 	}
+	/**
+	 * The nuke method deletes the entire linked list
+	 * by setting the first value to null letting java's
+	 * automatic java collection do the rest of the work
+	 */
+	public void nuke(){
+		head = null;
+	}
 	
 	public static void main(String[] args) {
 		DList linkedList = new DList();
-		linkedList.add("Amanda");
-		linkedList.add("Brian");
-		linkedList.add("Daniel");
-		linkedList.add("Emily");
+		linkedList.add("Amanda"); // Adds string to index 0
+		linkedList.add("Brian"); // Adds string to index 1
+		linkedList.add("Daniel"); // Adds string to index 2
+		linkedList.add("Emily"); // Adds string to index 3
 		System.out.println("The elements of the list are: ");
 		System.out.println(linkedList);
+		System.out.println("---------");
+		
+		linkedList.add(2, "Carl"); // Adds string to the index 2
+		System.out.println("The elements of the list are: ");
+		System.out.println(linkedList);
+		System.out.println("---------");
+		
+		linkedList.find("Brian"); //Searches list for a string value, returns Match if found
+		System.out.println("---------");
+		
+		System.out.println("Traverse Fowards");
+		linkedList.traverseFoward();
+		System.out.println("---------");
+		
+		System.out.println("Traverse Backwards");
+		linkedList.traverseBackwards();
+		System.out.println("---------");
+		
+		linkedList.remove(3); // removes the name from the index 3
+		System.out.println("The elements of the list are: ");
+		System.out.println(linkedList);
+		System.out.println("---------");
+		 
+		
+		System.out.println("Delete the entire Linked List");
+		linkedList.nuke();
+		System.out.println("The elements of the list are: ");
+		System.out.println(linkedList);
+		System.out.println("---------");
 		
 		
 		
